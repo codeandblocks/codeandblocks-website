@@ -5,7 +5,7 @@ interface Props {
   ogTitle?: string;
   canonical?: string;
   lang?: 'en' | 'de';
-  altHref?: string; // href for the other language
+  altHref?: string;
 }
 
 const {
@@ -22,21 +22,16 @@ const currentPath = Astro.url.pathname;
 
 const isDE = lang === 'de';
 const nav = {
-  plugins: isDE ? 'Plugins'       : 'Plugins',
-  about:   isDE ? 'Über mich'     : 'About',
-  plugin:  isDE ? 'Affiliate Blocks' : 'Affiliate Blocks',
-  buy:     isDE ? 'Jetzt kaufen'  : 'Buy now',
+  plugins: 'Plugins',
+  about:   isDE ? 'Über mich'       : 'About',
+  plugin:  'Affiliate Blocks',
+  buy:     isDE ? 'Jetzt kaufen'    : 'Buy now',
 };
-const homeHref        = isDE ? '/de/'               : '/';
-const pluginsHref     = isDE ? '/de/#plugins'       : '/#plugins';
-const aboutHref       = isDE ? '/de/#about'         : '/#about';
-const affiliateHref   = isDE ? '/de/affiliateblocks': '/affiliateblocks';
+const homeHref        = isDE ? '/de/'                : '/';
+const pluginsHref     = isDE ? '/de/#plugins'        : '/#plugins';
+const aboutHref       = isDE ? '/de/#about'          : '/#about';
+const affiliateHref   = isDE ? '/de/affiliateblocks' : '/affiliateblocks';
 const pricingHref     = isDE ? '/de/affiliateblocks#pricing' : '/affiliateblocks#pricing';
-const impressumHref   = '/impressum';
-const datenschutzHref = '/datenschutz';
-const footerCopy      = isDE
-  ? `© ${new Date().getFullYear()} Marijan Kelava · codeandblocks.xyz`
-  : `© ${new Date().getFullYear()} Marijan Kelava · codeandblocks.xyz`;
 ---
 
 <!doctype html>
@@ -52,15 +47,12 @@ const footerCopy      = isDE
     {altHref && lang === 'en' && <link rel="alternate" hreflang="de" href={siteUrl + altHref} />}
     {altHref && lang === 'de' && <link rel="alternate" hreflang="en" href={siteUrl + altHref} />}
 
-    <!-- Open Graph -->
     <meta property="og:type"        content="website" />
     <meta property="og:title"       content={ogTitle ?? title} />
     <meta property="og:description" content={description} />
     <meta property="og:url"         content={siteUrl + currentPath} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -70,9 +62,17 @@ const footerCopy      = isDE
     <header class="site-header">
       <div class="container">
         <a href={homeHref} class="site-logo">
-          ⬡ Code &amp; <span>Blocks</span>
+          ⬡ Code&nbsp;&amp;&nbsp;<span>Blocks</span>
         </a>
-        <nav class="site-nav">
+
+        <!-- Hamburger button (mobile only) -->
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav">
           <a href={pluginsHref}>{nav.plugins}</a>
           <a href={aboutHref}>{nav.about}</a>
           <a href={affiliateHref}>{nav.plugin}</a>
@@ -81,7 +81,7 @@ const footerCopy      = isDE
               {isDE ? '🇬🇧 EN' : '🇦🇹 DE'}
             </a>
           )}
-          <a href={pricingHref} class="btn btn--primary" style="padding:.5rem 1.1rem;font-size:.9rem;">{nav.buy}</a>
+          <a href={pricingHref} class="btn btn--primary nav-cta">{nav.buy}</a>
         </nav>
       </div>
     </header>
@@ -92,19 +92,69 @@ const footerCopy      = isDE
 
     <footer class="site-footer">
       <div class="container">
-        <p>{footerCopy}</p>
+        <p>© {new Date().getFullYear()} Marijan Kelava · <a href="https://codeandblocks.xyz">codeandblocks.xyz</a></p>
         <p>
-          <a href={impressumHref}>Impressum</a> ·
-          <a href={datenschutzHref}>Datenschutz</a>
+          <a href="/impressum">Impressum</a> ·
+          <a href="/datenschutz">Datenschutz</a>
         </p>
       </div>
     </footer>
+
+    <script>
+      const btn = document.getElementById('hamburger');
+      const nav = document.getElementById('site-nav');
+      btn?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+      // Close menu on nav link click
+      nav?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('is-open');
+          btn?.setAttribute('aria-expanded', 'false');
+        });
+      });
+    </script>
   </body>
 </html>
 
 <style is:global>
   @import '../styles/global.css';
 
+  /* ===== Button text color fix ===== */
+  .btn--primary { color: var(--color-bg) !important; }
+
+  /* ===== Nav CTA (in header) ===== */
+  .nav-cta { padding: .5rem 1.1rem !important; font-size: .9rem !important; }
+
+  /* ===== Hamburger ===== */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    padding: 6px 8px;
+    flex-shrink: 0;
+  }
+  .hamburger span {
+    display: block;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: transform .25s, opacity .2s;
+  }
+  /* Animate to X when open */
+  .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ===== Lang switcher ===== */
   .lang-switcher {
     font-size: .85rem;
     font-weight: 600;
@@ -118,5 +168,49 @@ const footerCopy      = isDE
     border-color: var(--color-accent);
     color: var(--color-accent) !important;
     text-decoration: none;
+  }
+
+  /* ===== Mobile nav ===== */
+  @media (max-width: 680px) {
+    .hamburger { display: flex; }
+
+    .site-logo { white-space: nowrap; }
+
+    .site-nav {
+      display: none;
+      position: absolute;
+      top: calc(100% + 1px);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 1rem 1.5rem 1.5rem;
+      gap: .25rem;
+    }
+    .site-nav.is-open { display: flex; }
+
+    .site-nav a {
+      font-size: 1rem;
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-text) !important;
+    }
+    .site-nav a:last-child { border-bottom: none; }
+
+    .site-nav .btn--primary {
+      margin-top: .75rem;
+      text-align: center;
+      justify-content: center;
+      border-bottom: none !important;
+    }
+
+    .site-nav .lang-switcher {
+      border: none;
+      border-bottom: 1px solid var(--color-border) !important;
+      border-radius: 0;
+      padding: .65rem 0;
+    }
   }
 </style>

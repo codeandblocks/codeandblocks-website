@@ -67,7 +67,7 @@ img { max-width: 100%; height: auto; display: block; }
   text-decoration: none;
 }
 .btn:hover { opacity: .88; transform: translateY(-1px); text-decoration: none; }
-.btn--primary  { background: var(--color-accent); color: #000; }
+.btn--primary  { background: var(--color-accent); color: var(--color-bg); }
 .btn--outline  { background: transparent; border: 2px solid var(--color-border); color: var(--color-text); }
 .btn--outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
 .btn--green    { background: var(--color-accent2); color: #000; }
@@ -77,6 +77,7 @@ img { max-width: 100%; height: auto; display: block; }
 .site-header {
   position: sticky;
   top: 0;
+  isolation: isolate; /* dropdown stacking context */
   z-index: 100;
   background: rgba(15,17,23,.85);
   backdrop-filter: blur(12px);
@@ -97,6 +98,7 @@ img { max-width: 100%; height: auto; display: block; }
   display: flex;
   align-items: center;
   gap: .5rem;
+  white-space: nowrap;
 }
 .site-logo:hover { text-decoration: none; opacity: .9; }
 .site-logo span { color: var(--color-accent); }
