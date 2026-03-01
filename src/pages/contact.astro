@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact — Code & Blocks"
+  description="Get in touch with Marijan Kelava — questions, feedback, or custom projects."
+  canonical="/contact"
+  lang="en"
+  altHref="/de/kontakt"
+>
+  <section class="section">
+    <div class="container" style="max-width:640px;">
+      <div class="section-heading" style="text-align:left;margin-bottom:2rem;">
+        <span class="badge">Contact</span>
+        <h1 style="color:var(--color-white);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;margin:.75rem 0 1rem;">
+          Get in touch
+        </h1>
+        <p style="color:var(--color-muted);font-size:1.05rem;">
+          Questions about the plugin, feedback, or a custom project idea?
+          I'll usually get back to you within 24–48 hours.
+        </p>
+      </div>
+
+      <form
+        name="contact"
+        method="POST"
+        action="/thanks"
+        netlify
+        class="contact-form"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option value="question">Question about the plugin</option>
+            <option value="feedback">Feedback</option>
+            <option value="bug">Bug report</option>
+            <option value="custom">Custom project</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required rows="6" placeholder="How can I help?"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center;">
+          Send message
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  label {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  input, select, textarea {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    font-family: var(--font);
+    font-size: 1rem;
+    padding: .75rem 1rem;
+    width: 100%;
+    transition: border-color .2s;
+    outline: none;
+  }
+  input::placeholder, textarea::placeholder { color: var(--color-muted); }
+  input:focus, select:focus, textarea:focus { border-color: var(--color-accent); }
+  select { appearance: none; cursor: pointer; }
+  textarea { resize: vertical; min-height: 140px; }
+</style>
