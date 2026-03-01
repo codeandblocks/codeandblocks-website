@@ -27,9 +27,14 @@ import Layout from '../../layouts/Layout.astro';
         method="POST"
         action="/de/danke"
         netlify
+        netlify-honeypot="bot-field"
         class="contact-form"
       >
         <input type="hidden" name="form-name" value="kontakt" />
+        <!-- Honeypot: für Menschen unsichtbar, Bots füllen es aus → Einreichung wird verworfen -->
+        <p class="honeypot-field" aria-hidden="true">
+          <label>Dieses Feld leer lassen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </p>
 
         <div class="form-group">
           <label for="name">Name</label>
@@ -97,4 +102,12 @@ import Layout from '../../layouts/Layout.astro';
   input:focus, select:focus, textarea:focus { border-color: var(--color-accent); }
   select { appearance: none; cursor: pointer; }
   textarea { resize: vertical; min-height: 140px; }
+  .honeypot-field {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
 </style>
