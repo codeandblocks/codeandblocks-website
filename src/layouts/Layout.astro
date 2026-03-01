@@ -4,6 +4,8 @@ interface Props {
   description?: string;
   ogTitle?: string;
   canonical?: string;
+  lang?: 'en' | 'de';
+  altHref?: string; // href for the other language
 }
 
 const {
@@ -11,14 +13,34 @@ const {
   description = 'WordPress Plugins by Marijan Kelava — Code & Blocks',
   ogTitle,
   canonical,
+  lang = 'en',
+  altHref,
 } = Astro.props;
 
 const siteUrl = 'https://codeandblocks.xyz';
 const currentPath = Astro.url.pathname;
+
+const isDE = lang === 'de';
+const nav = {
+  plugins: isDE ? 'Plugins'       : 'Plugins',
+  about:   isDE ? 'Über mich'     : 'About',
+  plugin:  isDE ? 'Affiliate Blocks' : 'Affiliate Blocks',
+  buy:     isDE ? 'Jetzt kaufen'  : 'Buy now',
+};
+const homeHref        = isDE ? '/de/'               : '/';
+const pluginsHref     = isDE ? '/de/#plugins'       : '/#plugins';
+const aboutHref       = isDE ? '/de/#about'         : '/#about';
+const affiliateHref   = isDE ? '/de/affiliateblocks': '/affiliateblocks';
+const pricingHref     = isDE ? '/de/affiliateblocks#pricing' : '/affiliateblocks#pricing';
+const impressumHref   = '/impressum';
+const datenschutzHref = '/datenschutz';
+const footerCopy      = isDE
+  ? `© ${new Date().getFullYear()} Marijan Kelava · codeandblocks.xyz`
+  : `© ${new Date().getFullYear()} Marijan Kelava · codeandblocks.xyz`;
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,6 +49,8 @@ const currentPath = Astro.url.pathname;
     <title>{title}</title>
     <meta name="description" content={description} />
     {canonical && <link rel="canonical" href={siteUrl + canonical} />}
+    {altHref && lang === 'en' && <link rel="alternate" hreflang="de" href={siteUrl + altHref} />}
+    {altHref && lang === 'de' && <link rel="alternate" hreflang="en" href={siteUrl + altHref} />}
 
     <!-- Open Graph -->
     <meta property="og:type"        content="website" />
@@ -34,7 +58,6 @@ const currentPath = Astro.url.pathname;
     <meta property="og:description" content={description} />
     <meta property="og:url"         content={siteUrl + currentPath} />
 
-    <!-- Favicon placeholder -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Fonts -->
@@ -46,14 +69,19 @@ const currentPath = Astro.url.pathname;
   <body>
     <header class="site-header">
       <div class="container">
-        <a href="/" class="site-logo">
+        <a href={homeHref} class="site-logo">
           ⬡ Code &amp; <span>Blocks</span>
         </a>
         <nav class="site-nav">
-          <a href="/#plugins">Plugins</a>
-          <a href="/#about">Über mich</a>
-          <a href="/affiliateblocks">Affiliate Blocks</a>
-          <a href="/affiliateblocks#pricing" class="btn btn--primary" style="padding:.5rem 1.1rem;font-size:.9rem;">Jetzt kaufen</a>
+          <a href={pluginsHref}>{nav.plugins}</a>
+          <a href={aboutHref}>{nav.about}</a>
+          <a href={affiliateHref}>{nav.plugin}</a>
+          {altHref && (
+            <a href={altHref} class="lang-switcher" title={isDE ? 'English' : 'Deutsch'}>
+              {isDE ? '🇬🇧 EN' : '🇦🇹 DE'}
+            </a>
+          )}
+          <a href={pricingHref} class="btn btn--primary" style="padding:.5rem 1.1rem;font-size:.9rem;">{nav.buy}</a>
         </nav>
       </div>
     </header>
@@ -64,10 +92,10 @@ const currentPath = Astro.url.pathname;
 
     <footer class="site-footer">
       <div class="container">
-        <p>© {new Date().getFullYear()} Marijan Kelava · <a href="https://codeandblocks.xyz">codeandblocks.xyz</a></p>
+        <p>{footerCopy}</p>
         <p>
-          <a href="/impressum">Impressum</a> ·
-          <a href="/datenschutz">Datenschutz</a>
+          <a href={impressumHref}>Impressum</a> ·
+          <a href={datenschutzHref}>Datenschutz</a>
         </p>
       </div>
     </footer>
@@ -76,4 +104,19 @@ const currentPath = Astro.url.pathname;
 
 <style is:global>
   @import '../styles/global.css';
+
+  .lang-switcher {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--color-muted) !important;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: .25rem .6rem;
+    transition: border-color .2s, color .2s;
+  }
+  .lang-switcher:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent) !important;
+    text-decoration: none;
+  }
 </style>

@@ -1,24 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Pricing — URLs werden nach LS-Setup befüllt
 const pricingPlans = [
   {
     name: 'Free',
     price: '0',
     period: '',
-    desc: 'Perfekt zum Ausprobieren.',
+    desc: 'Perfect for getting started.',
     features: [
-      { text: '1 Block-Stil (Standard)', included: true },
-      { text: 'Amazon-Link mit Tracking-ID', included: true },
-      { text: 'Unbegrenzte Blöcke', included: true },
-      { text: 'WordPress.org Support', included: true },
-      { text: 'Alle Block-Stile', included: false },
-      { text: 'Kompakter Stil', included: false },
-      { text: 'Vergleichstabellen-Block', included: false },
-      { text: 'Prioritäts-Support', included: false },
+      { text: '1 block style (Standard)', included: true },
+      { text: 'Amazon link with tracking ID', included: true },
+      { text: 'Unlimited blocks', included: true },
+      { text: 'WordPress.org support', included: true },
+      { text: 'All block styles', included: false },
+      { text: 'Compact style', included: false },
+      { text: 'Comparison table block', included: false },
+      { text: 'Priority support', included: false },
     ],
-    cta: 'Kostenlos herunterladen',
+    cta: 'Download for free',
     ctaUrl: 'https://wordpress.org/plugins/affiliate-blocks-for-amazon/',
     ctaClass: 'btn--outline',
     featured: false,
@@ -26,60 +25,60 @@ const pricingPlans = [
   {
     name: 'Personal',
     price: '29',
-    period: 'einmalig',
-    desc: 'Für 1 Website — alles, was du brauchst.',
+    period: 'one-time',
+    desc: 'For 1 website — everything you need.',
     features: [
-      { text: 'Alle Block-Stile', included: true },
-      { text: 'Kompakter Stil', included: true },
-      { text: 'Vergleichstabellen-Block', included: true },
-      { text: 'Prioritäts-Support', included: true },
-      { text: '1 Website-Lizenz', included: true },
-      { text: 'Lebenslange Updates', included: true },
-      { text: 'Mehrere Websites', included: false },
-      { text: 'Agentur-Nutzung', included: false },
+      { text: 'All block styles', included: true },
+      { text: 'Compact style', included: true },
+      { text: 'Comparison table block', included: true },
+      { text: 'Priority support', included: true },
+      { text: '1 site license', included: true },
+      { text: 'Lifetime updates', included: true },
+      { text: 'Multiple websites', included: false },
+      { text: 'Agency use', included: false },
     ],
-    cta: 'Personal kaufen',
-    ctaUrl: '#', // LS URL folgt
+    cta: 'Get Personal',
+    ctaUrl: '#',
     ctaClass: 'btn--primary',
     featured: true,
   },
   {
     name: 'Business',
     price: '59',
-    period: 'einmalig',
-    desc: 'Für bis zu 5 Websites.',
+    period: 'one-time',
+    desc: 'For up to 5 websites.',
     features: [
-      { text: 'Alle Block-Stile', included: true },
-      { text: 'Kompakter Stil', included: true },
-      { text: 'Vergleichstabellen-Block', included: true },
-      { text: 'Prioritäts-Support', included: true },
-      { text: 'Bis zu 5 Websites', included: true },
-      { text: 'Lebenslange Updates', included: true },
-      { text: 'Agentur-Nutzung', included: false },
-      { text: 'Unbegrenzte Websites', included: false },
+      { text: 'All block styles', included: true },
+      { text: 'Compact style', included: true },
+      { text: 'Comparison table block', included: true },
+      { text: 'Priority support', included: true },
+      { text: 'Up to 5 sites', included: true },
+      { text: 'Lifetime updates', included: true },
+      { text: 'Agency use', included: false },
+      { text: 'Unlimited websites', included: false },
     ],
-    cta: 'Business kaufen',
-    ctaUrl: '#', // LS URL folgt
+    cta: 'Get Business',
+    ctaUrl: '#',
     ctaClass: 'btn--outline',
     featured: false,
   },
   {
     name: 'Agency',
     price: '129',
-    period: 'einmalig',
-    desc: 'Für Agenturen & unbegrenzte Websites.',
+    period: 'one-time',
+    desc: 'For agencies & unlimited websites.',
     features: [
-      { text: 'Alle Block-Stile', included: true },
-      { text: 'Kompakter Stil', included: true },
-      { text: 'Vergleichstabellen-Block', included: true },
-      { text: 'Prioritäts-Support', included: true },
-      { text: 'Unbegrenzte Websites', included: true },
-      { text: 'Lebenslange Updates', included: true },
-      { text: 'Agentur-Nutzung', included: true },
-      { text: 'White-Label', included: false },
+      { text: 'All block styles', included: true },
+      { text: 'Compact style', included: true },
+      { text: 'Comparison table block', included: true },
+      { text: 'Priority support', included: true },
+      { text: 'Unlimited websites', included: true },
+      { text: 'Lifetime updates', included: true },
+      { text: 'Agency use', included: true },
+      { text: 'White-label', included: false },
     ],
-    cta: 'Agency kaufen',
-    ctaUrl: '#', // LS URL folgt
+    cta: 'Get Agency',
+    ctaUrl: '#',
     ctaClass: 'btn--outline',
     featured: false,
   },
@@ -87,60 +86,62 @@ const pricingPlans = [
 
 const faqs = [
   {
-    q: 'Funktioniert das Plugin mit jedem WordPress-Theme?',
-    a: 'Ja. Affiliate Blocks for Amazon ist theme-unabhängig und funktioniert mit jedem modernen WordPress-Theme, das den Gutenberg-Editor unterstützt.',
+    q: 'Does this plugin work with every WordPress theme?',
+    a: 'Yes. Affiliate Blocks for Amazon is theme-independent and works with any modern WordPress theme that supports the Gutenberg editor.',
   },
   {
-    q: 'Was passiert nach dem Kauf?',
-    a: 'Du erhältst sofort eine E-Mail mit deinem Lizenzschlüssel. Den gibst du einmalig im WordPress-Adminbereich ein — danach sind alle Pro-Features freigeschaltet und du bekommst automatische Updates.',
+    q: 'What happens after purchase?',
+    a: 'You will instantly receive an email with your license key. Enter it once in the WordPress admin area — all Pro features will be unlocked immediately and you will receive automatic updates.',
   },
   {
-    q: 'Kann ich die Pro-Version vor dem Kauf testen?',
-    a: 'Die Free-Version steht jederzeit kostenlos auf WordPress.org zur Verfügung. Pro-Features kannst du 14 Tage nach dem Kauf testen — bei Nichtgefallen gibt es eine vollständige Rückerstattung.',
+    q: 'Can I try Pro before buying?',
+    a: 'The free version is always available on WordPress.org. After purchase, you have 14 days to test the Pro features — if you are not satisfied, you will receive a full refund.',
   },
   {
-    q: 'Was ist der Unterschied zwischen den Lizenz-Tiers?',
-    a: 'Der einzige Unterschied ist die Anzahl der Websites, auf denen du das Plugin nutzen darfst. Features und Support sind bei Personal, Business und Agency identisch.',
+    q: 'What is the difference between the license tiers?',
+    a: 'The only difference is the number of websites you can use the plugin on. Features and support are identical across Personal, Business, and Agency.',
   },
   {
-    q: 'Ich bin ein Buy Me a Coffee-Supporter. Bekomme ich auch Pro-Zugang?',
-    a: 'Ja! Aktive BMaC-Supporter bekommen kostenlosen Pro-Zugang. Trage einfach deine BMaC-E-Mail-Adresse in der Plugin-Einstellungsseite ein.',
+    q: 'I am a Buy Me a Coffee supporter. Do I get Pro access?',
+    a: 'Yes! Active BMaC supporters get free Pro access. Simply enter your BMaC email address on the plugin settings page.',
   },
   {
-    q: 'Gibt es laufende Kosten?',
-    a: 'Nein. Du zahlst einmalig und bekommst lebenslange Updates für die Version, die du gekauft hast.',
+    q: 'Are there any recurring costs?',
+    a: 'No. You pay once and receive lifetime updates for the version you purchased.',
   },
 ];
 ---
 
 <Layout
-  title="Affiliate Blocks for Amazon — Schöne Produktboxen für Gutenberg"
-  description="Erstelle in Sekunden ansprechende Amazon-Produktboxen direkt im Gutenberg Editor. Kein Shortcode, kein Pagebuilder. Kostenlos starten, Pro ab €29."
+  title="Affiliate Blocks for Amazon — Beautiful Product Boxes for Gutenberg"
+  description="Create stunning Amazon product boxes directly in the Gutenberg editor. No shortcode, no page builder. Free to start, Pro from €29."
   canonical="/affiliateblocks"
+  lang="en"
+  altHref="/de/affiliateblocks"
 >
 
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <span class="badge">WordPress Plugin · Kostenlos verfügbar</span>
-      <h1>Amazon-Produktboxen,<br/>die <em>wirklich konvertieren.</em></h1>
+      <span class="badge">WordPress Plugin · Free to start</span>
+      <h1>Amazon product boxes<br/>that actually <em>convert.</em></h1>
       <p>
-        Erstelle professionelle Produktboxen direkt im Gutenberg Editor —
-        ohne Shortcodes, ohne Pagebuilder, ohne Kompromisse.
+        Create professional product boxes directly in the Gutenberg editor —
+        no shortcodes, no page builders, no compromises.
       </p>
       <div class="hero-actions">
-        <a href="#pricing" class="btn btn--primary btn--lg">Pro ab €29 →</a>
+        <a href="#pricing" class="btn btn--primary btn--lg">Pro from €29 →</a>
         <a
           href="https://wordpress.org/plugins/affiliate-blocks-for-amazon/"
           target="_blank"
           rel="noopener"
           class="btn btn--outline btn--lg"
         >
-          Kostenlos testen ↗
+          Try for free ↗
         </a>
       </div>
       <p style="margin-top:1.5rem;font-size:.875rem;color:var(--color-muted);">
-        ★★★★★ · Aktiv auf 1.000+ Websites
+        ★★★★★ · Active on 1,000+ websites
       </p>
     </div>
   </section>
@@ -150,50 +151,50 @@ const faqs = [
     <div class="container">
       <div class="section-heading">
         <span class="badge">Features</span>
-        <h2>Alles, was du brauchst</h2>
-        <p>Fokussierte Features für Affiliate-Marketer — ohne unnötigen Overhead.</p>
+        <h2>Everything you need</h2>
+        <p>Focused features for affiliate marketers — no unnecessary overhead.</p>
       </div>
 
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🧱</div>
-          <h3>Nativer Gutenberg Block</h3>
-          <p>Kein Shortcode, kein Plugin-Overhead. Einfach den Block einfügen und konfigurieren.</p>
+          <h3>Native Gutenberg Block</h3>
+          <p>No shortcode, no plugin overhead. Just insert the block and configure it.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎨</div>
-          <h3>Mehrere Block-Stile</h3>
-          <p>Standard, Kompakt und mehr — wähle den Stil, der zu deiner Website passt.</p>
+          <h3>Multiple Block Styles</h3>
+          <p>Standard, Compact, and more — choose the style that fits your website.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🔗</div>
-          <h3>Tracking-ID Integration</h3>
-          <p>Deine Amazon-Tracking-ID wird automatisch an alle Links angehängt. Einmal einstellen, fertig.</p>
+          <h3>Tracking ID Integration</h3>
+          <p>Your Amazon tracking ID is automatically appended to all links. Set it once, done.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
-          <h3>Schnell & Leichtgewichtig</h3>
-          <p>Kein jQuery, kein unnötiges CSS. Das Plugin lädt nur, was wirklich benötigt wird.</p>
+          <h3>Fast & Lightweight</h3>
+          <p>No jQuery, no bloated CSS. The plugin only loads what is actually needed.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📊</div>
-          <h3>Vergleichstabellen-Block</h3>
-          <p>Vergleiche mehrere Produkte in einer übersichtlichen Tabelle — ideal für Review-Artikel. <span style="color:var(--color-accent);font-size:.8rem;font-weight:600;">PRO</span></p>
+          <h3>Comparison Table Block</h3>
+          <p>Compare multiple products in a clean table — perfect for review articles. <span style="color:var(--color-accent);font-size:.8rem;font-weight:600;">PRO</span></p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🔄</div>
-          <h3>Automatische Updates</h3>
-          <p>Updates werden direkt über WordPress eingespielt — kein manuelles Herunterladen nötig.</p>
+          <h3>Automatic Updates</h3>
+          <p>Updates are delivered directly through WordPress — no manual downloading required.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Free vs Pro comparison -->
+  <!-- Free vs Pro -->
   <section class="section" style="border-top:1px solid var(--color-border);">
     <div class="container">
       <div class="section-heading">
-        <span class="badge">Vergleich</span>
+        <span class="badge">Comparison</span>
         <h2>Free vs. Pro</h2>
       </div>
       <div class="comparison" style="max-width:700px;margin:0 auto;">
@@ -207,42 +208,42 @@ const faqs = [
           </thead>
           <tbody>
             <tr>
-              <td>Standard-Produktbox</td>
+              <td>Standard product box</td>
               <td><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
             </tr>
             <tr>
-              <td>Amazon Tracking-ID</td>
+              <td>Amazon tracking ID</td>
               <td><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
             </tr>
             <tr>
-              <td>Unbegrenzte Blöcke</td>
+              <td>Unlimited blocks</td>
               <td><span class="check">✓</span></td>
               <td><span class="check">✓</span></td>
             </tr>
             <tr>
-              <td>Alle Block-Stile</td>
+              <td>All block styles</td>
               <td><span class="cross">✗</span></td>
               <td><span class="check">✓</span></td>
             </tr>
             <tr>
-              <td>Kompakter Stil</td>
+              <td>Compact style</td>
               <td><span class="cross">✗</span></td>
               <td><span class="check">✓</span></td>
             </tr>
             <tr>
-              <td>Vergleichstabellen-Block</td>
+              <td>Comparison table block</td>
               <td><span class="cross">✗</span></td>
               <td><span class="check">✓</span></td>
             </tr>
             <tr>
-              <td>Automatische Plugin-Updates</td>
+              <td>Automatic plugin updates</td>
               <td><span class="cross">✗</span></td>
               <td><span class="check">✓</span></td>
             </tr>
             <tr>
-              <td>Prioritäts-Support</td>
+              <td>Priority support</td>
               <td><span class="cross">✗</span></td>
               <td><span class="check">✓</span></td>
             </tr>
@@ -256,9 +257,9 @@ const faqs = [
   <section class="section" style="border-top:1px solid var(--color-border);" id="pricing">
     <div class="container">
       <div class="section-heading">
-        <span class="badge">Preise</span>
-        <h2>Einmaliger Preis. Lebenslange Updates.</h2>
-        <p>Kein Abo. Kein monatlicher Stress. Du zahlst einmal und nutzt das Plugin für immer.</p>
+        <span class="badge">Pricing</span>
+        <h2>One-time price. Lifetime updates.</h2>
+        <p>No subscription. No monthly stress. Pay once and use the plugin forever.</p>
       </div>
 
       <div class="pricing-grid">
@@ -290,8 +291,8 @@ const faqs = [
       </div>
 
       <p class="text-center text-muted" style="margin-top:2rem;font-size:.9rem;">
-        ☕ <strong style="color:var(--color-text);">Buy Me a Coffee Supporter</strong> bekommen kostenlosen Pro-Zugang.
-        <a href="https://buymeacoffee.com/codeandblocks">Jetzt Supporter werden →</a>
+        ☕ <strong style="color:var(--color-text);">Buy Me a Coffee supporters</strong> get free Pro access.
+        <a href="https://buymeacoffee.com/codeandblocks">Become a supporter →</a>
       </p>
     </div>
   </section>
@@ -301,7 +302,7 @@ const faqs = [
     <div class="container">
       <div class="section-heading">
         <span class="badge">FAQ</span>
-        <h2>Häufige Fragen</h2>
+        <h2>Frequently Asked Questions</h2>
       </div>
 
       <div class="faq-list">
@@ -319,19 +320,19 @@ const faqs = [
   <section class="section--sm" style="padding-bottom:5rem;">
     <div class="container">
       <div class="cta-banner">
-        <h2>Bereit, deine Affiliate-Einnahmen zu steigern?</h2>
+        <h2>Ready to boost your affiliate revenue?</h2>
         <p>
-          Fang kostenlos an und upgrade, wenn du bereit bist. Kein Risiko — 14 Tage Geld-zurück-Garantie.
+          Start for free and upgrade when you are ready. No risk — 14-day money-back guarantee.
         </p>
         <div class="hero-actions">
-          <a href="#pricing" class="btn btn--primary btn--lg">Jetzt upgraden</a>
+          <a href="#pricing" class="btn btn--primary btn--lg">Upgrade now</a>
           <a
             href="https://wordpress.org/plugins/affiliate-blocks-for-amazon/"
             target="_blank"
             rel="noopener"
             class="btn btn--outline btn--lg"
           >
-            Kostenlos starten ↗
+            Start for free ↗
           </a>
         </div>
       </div>
