@@ -75,8 +75,6 @@ const faqs = [
     color: var(--color-bg);
   }
 
-  /* Default: show monthly, hide lifetime */
-  .price-lifetime, .desc-lifetime, .cta-lifetime { display: none; }
   .is-hidden { display: none !important; }
 
   /* Responsive pricing grid */
@@ -91,7 +89,8 @@ const faqs = [
 
   /* BMaC strip */
   .bmac-strip {
-    margin-top: 2rem;
+    max-width: 900px;
+    margin: 2rem auto 0;
     background: rgba(245,158,11,.07);
     border: 1px solid rgba(245,158,11,.2);
     border-radius: var(--radius-lg);
@@ -292,15 +291,13 @@ const faqs = [
         <!-- Personal -->
         <div class="pricing-card featured">
           <div class="pricing-name">Personal</div>
-          <div>
-            <div class="pricing-price">
-              <span class="price-monthly">€3.99<span style="font-size:1rem;font-weight:400;color:var(--color-muted);"> / month</span></span>
-              <span class="price-lifetime">€29.99<span style="font-size:1rem;font-weight:400;color:var(--color-muted);"> one-time</span></span>
-            </div>
-            <div class="pricing-desc" style="margin-top:.5rem;">
-              <span class="desc-monthly">For bloggers — no API access needed.</span>
-              <span class="desc-lifetime">Pay once, use forever. 1 website.</span>
-            </div>
+          <div class="price-monthly">
+            <div class="pricing-price">€3.99<span> / month</span></div>
+            <div class="pricing-desc" style="margin-top:.5rem;">For bloggers — no API access needed.</div>
+          </div>
+          <div class="price-lifetime is-hidden">
+            <div class="pricing-price">€29.99<span> one-time</span></div>
+            <div class="pricing-desc" style="margin-top:.5rem;">Pay once, use forever. 1 website.</div>
           </div>
           <ul class="pricing-features">
             <li>Up to 50 products in library</li>
@@ -313,10 +310,8 @@ const faqs = [
             <li class="no">Slider layout</li>
             <li class="no">Priority support</li>
           </ul>
-          <a href="#" class="btn btn--primary">
-            <span class="cta-monthly">Get Personal</span>
-            <span class="cta-lifetime">Get Lifetime</span>
-          </a>
+          <a href="#" class="btn btn--primary cta-monthly">Get Personal</a>
+          <a href="#" class="btn btn--primary cta-lifetime is-hidden">Get Lifetime</a>
         </div>
 
         <!-- Professional -->
@@ -412,10 +407,10 @@ const faqs = [
         btns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const isLifetime = (btn as HTMLButtonElement).dataset.billing === 'lifetime';
-        document.querySelectorAll('.price-monthly, .desc-monthly, .cta-monthly').forEach(el => {
+        document.querySelectorAll('.price-monthly, .cta-monthly').forEach(el => {
           el.classList.toggle('is-hidden', isLifetime);
         });
-        document.querySelectorAll('.price-lifetime, .desc-lifetime, .cta-lifetime').forEach(el => {
+        document.querySelectorAll('.price-lifetime, .cta-lifetime').forEach(el => {
           el.classList.toggle('is-hidden', !isLifetime);
         });
       });
