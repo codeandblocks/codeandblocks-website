@@ -3,8 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Code & Blocks — WordPress Plugins von Marijan Kelava"
-  description="Hochwertige WordPress Gutenberg Blocks und Plugins für Blogger, Affiliate-Marketer und Entwickler."
+  title="Code & Blocks — Digitale Produkte von Marijan Kelava"
+  description="Ich designe und baue digitale Produkte — Web-Apps, Tools und WordPress Plugins. Aus Wien, Österreich."
   canonical="/de/"
   lang="de"
   altHref="/"
@@ -13,44 +13,61 @@ import Layout from '../../layouts/Layout.astro';
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <span class="badge">WordPress Plugins</span>
-      <h1>Plugins, die <em>deinen Workflow</em><br/>wirklich vereinfachen.</h1>
+      <span class="badge">Indie Developer · Wien, Österreich</span>
+      <h1>Ich baue Dinge<br/>für das <em>Web.</em></h1>
       <p>
-        Ich baue fokussierte WordPress Plugins für Blogger, Affiliate-Marketer
-        und Content Creator — schlank, schnell und ohne unnötigen Ballast.
+        Apps, Tools, WordPress Plugins — ich designe und baue fokussierte digitale Produkte,
+        die echte Probleme lösen. Sauberer Code, gute UX, keine unnötige Komplexität.
       </p>
       <div class="hero-actions">
-        <a href="#plugins" class="btn btn--primary btn--lg">Plugins entdecken</a>
+        <a href="#projects" class="btn btn--primary btn--lg">Meine Arbeit</a>
         <a href="#about" class="btn btn--outline btn--lg">Über mich</a>
       </div>
     </div>
   </section>
 
-  <!-- Plugins -->
-  <section class="section" id="plugins">
+  <!-- Projects -->
+  <section class="section" id="projects">
     <div class="container">
       <div class="section-heading">
-        <span class="badge">Produkte</span>
-        <h2>Meine Plugins</h2>
-        <p>Jedes Plugin löst ein konkretes Problem — nichts mehr, nichts weniger.</p>
+        <span class="badge">Projekte</span>
+        <h2>Was ich gebaut habe</h2>
+        <p>Jedes Projekt löst ein konkretes Problem — nichts mehr, nichts weniger.</p>
       </div>
 
-      <a href="/de/affiliateblocks" class="plugin-card" style="max-width:780px;margin:0 auto;">
-        <div class="plugin-card-icon">🛍️</div>
-        <div>
-          <h3>Affiliate Blocks for Amazon</h3>
-          <p>
-            Schöne, conversion-optimierte Produktboxen für Amazon-Affiliates —
-            direkt im Gutenberg Editor. Kein Shortcode, kein Pagebuilder nötig.
-          </p>
-          <div class="plugin-card-tags">
-            <span class="tag">Gutenberg</span>
-            <span class="tag">Amazon Affiliate</span>
-            <span class="tag">WordPress</span>
-            <span class="tag">Kostenlos verfügbar</span>
+      <div style="max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:1.25rem;">
+        <a href="/de/affiliateblocks" class="plugin-card">
+          <div class="plugin-card-icon">🛍️</div>
+          <div>
+            <h3>Affiliate Blocks for Amazon</h3>
+            <p>
+              Schöne, conversion-optimierte Produktboxen für Amazon-Affiliates —
+              direkt im Gutenberg Editor. Kein Shortcode, kein Pagebuilder nötig.
+            </p>
+            <div class="plugin-card-tags">
+              <span class="tag">WordPress Plugin</span>
+              <span class="tag">Gutenberg</span>
+              <span class="tag">Amazon Affiliate</span>
+              <span class="tag">Kostenlos verfügbar</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Platzhalter für zukünftige Projekte -->
+        <div class="plugin-card" style="opacity:.45;cursor:default;pointer-events:none;">
+          <div class="plugin-card-icon">🔧</div>
+          <div>
+            <h3>Mehr kommt bald</h3>
+            <p>
+              Neue Tools und Projekte sind in Arbeit. Meld dich gerne,
+              wenn du eine Idee hast oder an einer Zusammenarbeit interessiert bist.
+            </p>
+            <div class="plugin-card-tags">
+              <span class="tag">In Arbeit</span>
+            </div>
           </div>
         </div>
-      </a>
+      </div>
     </div>
   </section>
 
@@ -61,13 +78,13 @@ import Layout from '../../layouts/Layout.astro';
         <div class="about-text">
           <h2>Hi, ich bin Marijan.</h2>
           <p>
-            Ich entwickle WordPress Plugins, die ich selbst gerne nutzen würde.
-            Mein Fokus liegt auf sauberem Code, guter UX und echtem Mehrwert —
-            ohne Feature-Bloat.
+            Ich bin Indie Developer aus Wien. Ich baue digitale Produkte —
+            hauptsächlich Web-Tools und WordPress Plugins — die ich selbst gerne nutzen würde.
           </p>
           <p>
-            Wenn du Fragen hast, Feedback loswerden möchtest oder an einem
-            Custom-Projekt interessiert bist, schreib mich gerne an.
+            Mein Fokus liegt auf sauberem Code, guter UX und Dingen, die wirklich funktionieren.
+            Du hast eine Projektidee, brauchst eine Custom-Lösung oder möchtest einfach Hallo sagen?
+            Schreib mir gerne.
           </p>
           <a href="/de/kontakt" class="btn btn--outline" style="margin-top:.5rem;">
             Kontakt aufnehmen
@@ -91,8 +108,8 @@ import Layout from '../../layouts/Layout.astro';
           <div style="display:flex;align-items:center;gap:1rem;">
             <span style="font-size:2rem;">🛠️</span>
             <div>
-              <div style="color:var(--color-white);font-weight:600;">Aktive Entwicklung</div>
-              <div style="color:var(--color-muted);font-size:.875rem;">Regelmäßige Updates & Support</div>
+              <div style="color:var(--color-white);font-weight:600;">Aktiv am Bauen</div>
+              <div style="color:var(--color-muted);font-size:.875rem;">Regelmäßige Updates & neue Projekte</div>
             </div>
           </div>
         </div>
@@ -104,13 +121,11 @@ import Layout from '../../layouts/Layout.astro';
   <section class="section--sm">
     <div class="container">
       <div class="cta-banner">
-        <h2>Bereit loszulegen?</h2>
-        <p>Probiere Affiliate Blocks for Amazon kostenlos aus — kein Konto nötig.</p>
+        <h2>Ein Projekt im Kopf?</h2>
+        <p>Ob Custom-Tool, WordPress Plugin oder etwas ganz anderes — lass uns reden.</p>
         <div class="hero-actions">
-          <a href="/de/affiliateblocks" class="btn btn--primary btn--lg">Zum Plugin</a>
-          <a href="https://wordpress.org/plugins/affiliate-blocks-for-amazon/" target="_blank" rel="noopener" class="btn btn--outline btn--lg">
-            WordPress.org ↗
-          </a>
+          <a href="/de/kontakt" class="btn btn--primary btn--lg">Kontakt aufnehmen</a>
+          <a href="#projects" class="btn btn--outline btn--lg">Meine Arbeit</a>
         </div>
       </div>
     </div>
