@@ -1,109 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const pricingPlans = [
-  {
-    name: 'Free',
-    price: '0',
-    period: '',
-    desc: 'Perfekt zum Ausprobieren.',
-    features: [
-      { text: 'Bis zu 10 Produkte in der Bibliothek', included: true },
-      { text: 'Standard- & Mini-Layout', included: true },
-      { text: 'Amazon Tracking-ID', included: true },
-      { text: 'Unbegrenzte Blöcke', included: true },
-      { text: 'Grid- / Listen-Layout', included: false },
-      { text: 'Kategorien', included: false },
-      { text: 'Slider-Layout', included: false },
-      { text: 'Vergleichstabelle', included: false },
-    ],
-    cta: 'Kostenlos herunterladen',
-    ctaUrl: 'https://wordpress.org/plugins/affiliate-blocks-for-amazon/',
-    ctaClass: 'btn--outline',
-    featured: false,
-  },
-  {
-    name: 'Personal',
-    price: '3,99',
-    period: 'Monat',
-    desc: 'Für 1 Website — alles, was du brauchst.',
-    features: [
-      { text: 'Bis zu 50 Produkte in der Bibliothek', included: true },
-      { text: 'Alle Layouts inkl. Grid & Liste', included: true },
-      { text: 'Kategorien', included: true },
-      { text: 'Automatische Preis-Updates', included: true },
-      { text: '1 Website-Lizenz', included: true },
-      { text: 'Slider-Layout', included: false },
-      { text: 'Vergleichstabelle', included: false },
-      { text: 'Prioritäts-Support', included: false },
-    ],
-    cta: 'Personal holen',
-    ctaUrl: '#',
-    ctaClass: 'btn--primary',
-    featured: true,
-  },
-  {
-    name: 'Business',
-    price: '9,99',
-    period: 'Monat',
-    desc: 'Für bis zu 5 Websites.',
-    features: [
-      { text: 'Bis zu 200 Produkte in der Bibliothek', included: true },
-      { text: 'Alle Layouts inkl. Slider', included: true },
-      { text: 'Vergleichstabelle', included: true },
-      { text: 'Bulk-Import', included: true },
-      { text: 'Custom CSS pro Block', included: true },
-      { text: 'Bis zu 5 Websites', included: true },
-      { text: 'Prioritäts-Support', included: true },
-      { text: 'White-Label', included: false },
-    ],
-    cta: 'Business holen',
-    ctaUrl: '#',
-    ctaClass: 'btn--outline',
-    featured: false,
-  },
-  {
-    name: 'Agency',
-    price: '19,99',
-    period: 'Monat',
-    desc: 'Für Agenturen & unbegrenzte Websites.',
-    features: [
-      { text: 'Unbegrenzte Produkte in der Bibliothek', included: true },
-      { text: 'Alle Layouts inkl. Slider', included: true },
-      { text: 'Vergleichstabelle', included: true },
-      { text: 'Bulk-Import', included: true },
-      { text: 'Custom CSS pro Block', included: true },
-      { text: 'Unbegrenzte Websites', included: true },
-      { text: 'Prioritäts-Support', included: true },
-      { text: 'White-Label', included: true },
-    ],
-    cta: 'Agency holen',
-    ctaUrl: '#',
-    ctaClass: 'btn--outline',
-    featured: false,
-  },
-  {
-    name: 'Lifetime',
-    price: '49,99',
-    period: 'einmalig',
-    desc: 'Einmal zahlen, für immer nutzen. 1 Website.',
-    features: [
-      { text: 'Bis zu 50 Produkte in der Bibliothek', included: true },
-      { text: 'Alle Layouts inkl. Grid & Liste', included: true },
-      { text: 'Kategorien', included: true },
-      { text: 'Automatische Preis-Updates', included: true },
-      { text: '1 Website-Lizenz', included: true },
-      { text: 'Lebenslange Updates', included: true },
-      { text: 'Slider-Layout', included: false },
-      { text: 'Vergleichstabelle', included: false },
-    ],
-    cta: 'Lifetime holen',
-    ctaUrl: '#',
-    ctaClass: 'btn--outline',
-    featured: false,
-  },
-];
-
 const faqs = [
   {
     q: 'Funktioniert das Plugin mit jedem WordPress-Theme?',
@@ -118,8 +15,12 @@ const faqs = [
     a: 'Die Free-Version steht jederzeit kostenlos auf WordPress.org zur Verfügung. Pro-Features kannst du 14 Tage nach dem Kauf testen — bei Nichtgefallen gibt es eine vollständige Rückerstattung.',
   },
   {
-    q: 'Was ist der Unterschied zwischen den Lizenz-Tiers?',
-    a: 'Die Tiers unterscheiden sich in der Anzahl der Websites und im Funktionsumfang. Personal deckt den alltäglichen Affiliate-Blog-Bedarf ab. Business ergänzt Vergleichstabelle, Slider-Layout, Bulk-Import und Custom CSS. Agency entspricht Business, erlaubt aber unbegrenzte Websites und White-Label-Nutzung.',
+    q: 'Was ist der Unterschied zwischen Personal und Professional?',
+    a: 'Personal ist für Blogger ohne Amazon-API-Zugang — du pflegst deine Produktbibliothek manuell über die Browser-Extension. Professional ergänzt direkten Amazon-API-Sync, sodass Produkte automatisch ins Dashboard importiert werden. Dazu kommen Slider-Layout, Vergleichstabelle, Bulk-Import, Custom CSS pro Block und bis zu 5 Websites.',
+  },
+  {
+    q: 'Brauche ich die Browser-Extension?',
+    a: 'Ja — eine kostenlose Chrome- und Firefox-Extension ist erforderlich, um Produkte in deine Bibliothek zu importieren. Sie funktioniert mit allen Plänen und ist vollständig kostenlos. (Aktuell in Entwicklung.)',
   },
   {
     q: 'Ich bin ein Buy Me a Coffee-Supporter. Bekomme ich auch Pro-Zugang?',
@@ -127,7 +28,7 @@ const faqs = [
   },
   {
     q: 'Gibt es laufende Kosten?',
-    a: 'Personal, Business und Agency sind monatliche Abos — jederzeit kündbar. Wer lieber einmalig zahlt, greift zum Lifetime-Plan: gleiche Features wie Personal, keine laufenden Kosten.',
+    a: 'Personal ist als monatliches Abo (3,99€/Monat, jederzeit kündbar) oder als einmalige Lifetime-Zahlung (29,99€) erhältlich. Professional ist ein monatliches Abo (9,99€/Monat, jederzeit kündbar). Wer lieber einmalig zahlt und nur Personal-Features benötigt, ist mit dem Lifetime-Plan am besten bedient.',
   },
 ];
 ---
@@ -139,6 +40,69 @@ const faqs = [
   lang="de"
   altHref="/affiliateblocks"
 >
+
+<style>
+  /* Equal-height cards */
+  #pricing-grid { align-items: stretch; }
+
+  /* Billing toggle */
+  .billing-toggle {
+    display: flex;
+    margin: 0 auto 2.5rem;
+    width: fit-content;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 50px;
+    padding: 4px;
+  }
+  .billing-btn {
+    background: none;
+    border: none;
+    padding: .45rem 1.4rem;
+    border-radius: 50px;
+    font-size: .9rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--color-muted);
+    transition: all .2s;
+    font-family: var(--font);
+  }
+  .billing-btn.active {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  /* Default: show monthly, hide lifetime */
+  .price-lifetime, .desc-lifetime, .cta-lifetime { display: none; }
+  .is-hidden { display: none !important; }
+
+  /* Responsive pricing grid */
+  #pricing-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 700px) {
+    #pricing-grid { grid-template-columns: 1fr; }
+  }
+
+  /* BMaC strip */
+  .bmac-strip {
+    margin-top: 2rem;
+    background: rgba(245,158,11,.07);
+    border: 1px solid rgba(245,158,11,.2);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .bmac-icon { font-size: 2rem; flex-shrink: 0; }
+  .bmac-content { flex: 1; min-width: 200px; }
+  .bmac-content strong { color: var(--color-white); display: block; margin-bottom: .25rem; }
+  .bmac-content p { color: var(--color-muted); font-size: .9rem; margin: 0; }
+</style>
 
   <!-- Hero -->
   <section class="hero">
@@ -202,9 +166,9 @@ const faqs = [
           <p>Vergleiche mehrere Produkte in einer übersichtlichen Tabelle — ideal für Review-Artikel. <span style="color:var(--color-accent);font-size:.8rem;font-weight:600;">PRO</span></p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🔄</div>
-          <h3>Automatische Updates</h3>
-          <p>Updates werden direkt über WordPress eingespielt — kein manuelles Herunterladen nötig.</p>
+          <div class="feature-icon">🔌</div>
+          <h3>Browser-Extension</h3>
+          <p>Kostenlose Chrome- & Firefox-Extension zum direkten Importieren von Amazon-Produkten — für alle Pläne erforderlich. <span style="color:var(--color-muted);font-size:.8rem;">(Demnächst verfügbar)</span></p>
         </div>
       </div>
     </div>
@@ -217,61 +181,64 @@ const faqs = [
         <span class="badge">Vergleich</span>
         <h2>Free vs. Pro</h2>
       </div>
-      <div class="comparison" style="max-width:800px;margin:0 auto;">
+      <div class="comparison" style="max-width:760px;margin:0 auto;">
         <table>
           <thead>
             <tr>
               <th>Feature</th>
               <th>Free</th>
               <th>Personal</th>
-              <th>Business</th>
-              <th>Agency</th>
+              <th>Professional</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Produkte in Bibliothek</td>
-              <td>10</td><td>50</td><td>200</td><td>∞</td>
+              <td>10</td><td>50</td><td>200</td>
             </tr>
             <tr>
               <td>Standard- & Mini-Layout</td>
-              <td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Browser-Extension (kostenlos)</td>
+              <td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
             </tr>
             <tr>
               <td>Grid- / Listen-Layout</td>
-              <td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
             </tr>
             <tr>
               <td>Kategorien</td>
-              <td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
             </tr>
             <tr>
               <td>Automatische Preis-Updates</td>
-              <td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Amazon-API-Sync</td>
+              <td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td>
             </tr>
             <tr>
               <td>Slider-Layout</td>
-              <td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td>
             </tr>
             <tr>
               <td>Vergleichstabelle</td>
-              <td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td>
             </tr>
             <tr>
               <td>Bulk-Import</td>
-              <td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td>
             </tr>
             <tr>
               <td>Prioritäts-Support</td>
-              <td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td>
-            </tr>
-            <tr>
-              <td>White-Label</td>
-              <td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td><td><span class="cross">✗</span></td><td><span class="check">✓</span></td>
             </tr>
             <tr>
               <td>Websites</td>
-              <td>1</td><td>1</td><td>5</td><td>∞</td>
+              <td>1</td><td>1</td><td>5</td>
             </tr>
           </tbody>
         </table>
@@ -285,41 +252,111 @@ const faqs = [
       <div class="section-heading">
         <span class="badge">Preise</span>
         <h2>Einfache, transparente Preise.</h2>
-        <p>Monatliche Abos — jederzeit kündbar. Oder greif zum Lifetime-Plan und zahle nur einmal.</p>
+        <p>Kostenlos starten. Upgrade, wenn du bereit bist. Jederzeit kündbar.</p>
       </div>
 
-      <div class="pricing-grid">
-        {pricingPlans.map((plan) => (
-          <div class={`pricing-card ${plan.featured ? 'featured' : ''}`}>
-            <div class="pricing-name">{plan.name}</div>
-            <div>
-              <div class="pricing-price">
-                €{plan.price}
-                {plan.period && <span> / {plan.period}</span>}
-              </div>
-              <div class="pricing-desc" style="margin-top:.5rem;">{plan.desc}</div>
-            </div>
-            <ul class="pricing-features">
-              {plan.features.map((f) => (
-                <li class={f.included ? '' : 'no'}>{f.text}</li>
-              ))}
-            </ul>
-            <a
-              href={plan.ctaUrl}
-              class={`btn ${plan.ctaClass}`}
-              target={plan.ctaUrl.startsWith('http') ? '_blank' : undefined}
-              rel={plan.ctaUrl.startsWith('http') ? 'noopener' : undefined}
-            >
-              {plan.cta}
-            </a>
+      <!-- Billing toggle -->
+      <div class="billing-toggle">
+        <button class="billing-btn active" data-billing="monthly">Monatlich</button>
+        <button class="billing-btn" data-billing="lifetime">Lifetime</button>
+      </div>
+
+      <!-- 3-card grid -->
+      <div class="pricing-grid" id="pricing-grid">
+
+        <!-- Free -->
+        <div class="pricing-card">
+          <div class="pricing-name">Free</div>
+          <div>
+            <div class="pricing-price">€0</div>
+            <div class="pricing-desc" style="margin-top:.5rem;">Perfekt zum Ausprobieren.</div>
           </div>
-        ))}
+          <ul class="pricing-features">
+            <li>Bis zu 10 Produkte in der Bibliothek</li>
+            <li>Standard- & Mini-Layout</li>
+            <li>Amazon Tracking-ID</li>
+            <li>Unbegrenzte Blöcke</li>
+            <li>Browser-Extension (kostenlos)</li>
+            <li class="no">Grid- / Listen-Layout</li>
+            <li class="no">Automatische Preis-Updates</li>
+            <li class="no">Amazon-API-Sync</li>
+          </ul>
+          <a href="https://wordpress.org/plugins/affiliate-blocks-for-amazon/" class="btn btn--outline" target="_blank" rel="noopener">
+            Kostenlos herunterladen
+          </a>
+        </div>
+
+        <!-- Personal -->
+        <div class="pricing-card featured">
+          <div class="pricing-name">Personal</div>
+          <div>
+            <div class="pricing-price">
+              <span class="price-monthly">€3,99<span style="font-size:1rem;font-weight:400;color:var(--color-muted);"> / Monat</span></span>
+              <span class="price-lifetime">€29,99<span style="font-size:1rem;font-weight:400;color:var(--color-muted);"> einmalig</span></span>
+            </div>
+            <div class="pricing-desc" style="margin-top:.5rem;">
+              <span class="desc-monthly">Für Blogger — kein API-Zugang nötig.</span>
+              <span class="desc-lifetime">Einmal zahlen, für immer nutzen. 1 Website.</span>
+            </div>
+          </div>
+          <ul class="pricing-features">
+            <li>Bis zu 50 Produkte in der Bibliothek</li>
+            <li>Alle Layouts inkl. Grid & Liste</li>
+            <li>Kategorien</li>
+            <li>Automatische Preis-Updates</li>
+            <li>1 Website-Lizenz</li>
+            <li>Browser-Extension (kostenlos)</li>
+            <li class="no">Amazon-API-Sync</li>
+            <li class="no">Slider-Layout</li>
+            <li class="no">Prioritäts-Support</li>
+          </ul>
+          <a href="#" class="btn btn--primary">
+            <span class="cta-monthly">Personal holen</span>
+            <span class="cta-lifetime">Lifetime holen</span>
+          </a>
+        </div>
+
+        <!-- Professional -->
+        <div class="pricing-card">
+          <div class="pricing-name">Professional</div>
+          <div>
+            <div class="pricing-price">€9,99<span> / Monat</span></div>
+            <div class="pricing-desc" style="margin-top:.5rem;">Mit Amazon-API-Zugang & mehr.</div>
+          </div>
+          <ul class="pricing-features">
+            <li>Bis zu 200 Produkte in der Bibliothek</li>
+            <li>Alle Layouts inkl. Slider</li>
+            <li>Amazon-API-Sync</li>
+            <li>Vergleichstabelle</li>
+            <li>Bulk-Import</li>
+            <li>Custom CSS pro Block</li>
+            <li>Bis zu 5 Websites</li>
+            <li>Prioritäts-Support</li>
+            <li>Browser-Extension (kostenlos)</li>
+          </ul>
+          <a href="#" class="btn btn--outline">
+            Professional holen
+          </a>
+        </div>
+
       </div>
 
-      <p class="text-center text-muted" style="margin-top:2rem;font-size:.9rem;">
-        ☕ <strong style="color:var(--color-text);">Buy Me a Coffee Supporter</strong> (2,99€/Monat) bekommen kostenlosen Supporter-Tier-Zugang.
-        <a href="https://buymeacoffee.com/codeandblocks">Jetzt Supporter werden →</a>
+      <!-- BMaC strip -->
+      <div class="bmac-strip">
+        <span class="bmac-icon">☕</span>
+        <div class="bmac-content">
+          <strong>Buy Me a Coffee Supporter</strong>
+          <p>Unterstütze für 2,99€/Monat und erhalte kostenlosen Personal-Tier-Zugang — Grid-/Listen-Layout, Kategorien und bis zu 20 Produkte. Kein Lizenzschlüssel nötig.</p>
+        </div>
+        <a href="https://buymeacoffee.com/codeandblocks" class="btn btn--outline" target="_blank" rel="noopener" style="white-space:nowrap;">
+          Jetzt Supporter werden →
+        </a>
+      </div>
+
+      <p class="text-center" style="margin-top:1.5rem;color:var(--color-muted);font-size:.95rem;">
+        Brauchst du mehr? Sonderwünsche? <a href="/de/kontakt">Schreib mir.</a>
       </p>
+
     </div>
   </section>
 
@@ -361,5 +398,22 @@ const faqs = [
       </div>
     </div>
   </section>
+
+  <script>
+    const btns = document.querySelectorAll('.billing-btn');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const isLifetime = (btn as HTMLButtonElement).dataset.billing === 'lifetime';
+        document.querySelectorAll('.price-monthly, .desc-monthly, .cta-monthly').forEach(el => {
+          el.classList.toggle('is-hidden', isLifetime);
+        });
+        document.querySelectorAll('.price-lifetime, .desc-lifetime, .cta-lifetime').forEach(el => {
+          el.classList.toggle('is-hidden', !isLifetime);
+        });
+      });
+    });
+  </script>
 
 </Layout>
