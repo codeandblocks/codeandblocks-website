@@ -95,7 +95,8 @@ const pricingHref     = isDE ? '/de/affiliateblocks#pricing' : '/affiliateblocks
         <p>© {new Date().getFullYear()} Marijan Kelava · <a href="https://codeandblocks.xyz">codeandblocks.xyz</a></p>
         <p>
           <a href="/impressum">Impressum</a> ·
-          <a href="/datenschutz">Datenschutz</a>
+          <a href="/datenschutz">Datenschutz</a> ·
+          <a href={isDE ? '/de/agb' : '/terms'}>{isDE ? 'AGB' : 'Terms'}</a>
         </p>
       </div>
     </footer>
